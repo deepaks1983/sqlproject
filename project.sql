@@ -54,6 +54,7 @@ insert into Customer values (201, 'Sooraj', 'Trivandrum', '2012-12-31'),
                             (205, 'Mammootty', 'Ernakulam', '2020-08-25'),
                             (206, 'Suresh', 'Kaviyoor', '2019-06-30'),
                             (207, 'Hrithik', 'Attingal', '2023-03-17');
+insert into Customer values (208, 'Anita', 'Trivandrum', '2021-12-31');
                             
 
 
@@ -149,7 +150,8 @@ select Emp_name, position, salary from employee where salary > 50000;
 -- 6. List the customer names who registered before 2022-01-01 and have
 -- not issued any books yet.
 
-select Customer_name, reg_date from customer where reg_date < '2022-01-01';
+select customer.Customer_name, IssueStatus.issued_cust from customer  left join IssueStatus
+on Customer_Id = Issued_cust where reg_date < '2022-01-01' & IssueStatus.issued_cust is null;
 
 -- 7. Display the branch numbers and the total count of employees in each
 -- branch.
